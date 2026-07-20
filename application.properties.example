@@ -1,7 +1,1 @@
-spring.data.mongodb.host = 
-spring.data.mongodb.port = 27017
-spring.data.mongodb.database = 
-spring.data.mongodb.credentials.username = 
-spring.data.mongodb.credentials.password = 
-spring.devtools.restart.enabled = true
-spring.devtools.livereload.enabled = true
+spring.data.mongodb.uri = mongodb+srv://<username>:<password>@<cluster>.<server>.mongodb.net/<database>?retryWrites=true&w=majority

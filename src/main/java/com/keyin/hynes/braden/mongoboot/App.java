@@ -7,8 +7,7 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 @EnableMongoAuditing
 @ComponentScan(basePackages = {
   "com.keyin.hynes.braden.mongoboot.controllers",
-  "com.keyin.hynes.braden.mongoboot.interfaces.repositories",
-  "com.keyin.hynes.braden.mongoboot.services"
+  "com.keyin.hynes.braden.mongoboot.interfaces.repositories"
 })
 public class App {
   public static void main(final String[] args) {

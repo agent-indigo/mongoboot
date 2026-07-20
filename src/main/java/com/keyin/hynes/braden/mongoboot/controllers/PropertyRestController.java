@@ -6,18 +6,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.keyin.hynes.braden.mongoboot.documents.Property;
-import com.keyin.hynes.braden.mongoboot.services.PropertyService;
-@RestController
+import com.keyin.hynes.braden.mongoboot.interfaces.repositories.PropertyRepository;
 @CrossOrigin
-@RequestMapping("/api/properties")
+@RequestMapping("/properties")
+@RestController
 public final class PropertyRestController {
-  private final PropertyService propertyService;
-  @Autowired
-  public PropertyRestController(final PropertyService propertyService) {
-    this.propertyService = propertyService;
+  private final PropertyRepository propertyRepository;
+  public PropertyRestController(@Autowired final PropertyRepository propertyRepository) {
+    this.propertyRepository = propertyRepository;
   }
   @GetMapping
-  public List<Property> findAll() {
-    return propertyService.findAll();
+  public List<Property> getAll() {
+    return propertyRepository.findAll();
   }
 }
