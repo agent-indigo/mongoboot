@@ -40,7 +40,6 @@ public final class PropertyRestController {
     @RequestBody final Property changes
   ) {
     target = propertyRepository.findById(id).get();
-    if (changes.getOwner() != null) target.setOwner(changes.getOwner());
     if (changes.getName() != null) target.setName(changes.getName());
     if (changes.getType() != null) target.setType(changes.getType());
     if (changes.getDescription() != null) target.setDescription(changes.getDescription());
