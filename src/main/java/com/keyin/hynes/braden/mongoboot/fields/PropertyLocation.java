@@ -5,5 +5,5 @@ public final class PropertyLocation {
   private String street;
   private String city;
   private String state;
-  private Integer zipcode;
+  private String zipcode;
 }
