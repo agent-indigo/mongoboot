@@ -12,28 +12,33 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.keyin.hynes.braden.mongoboot.documents.Property;
+import com.keyin.hynes.braden.mongoboot.interfaces.RestCrud;
 import com.keyin.hynes.braden.mongoboot.interfaces.repositories.PropertyRepository;
 @CrossOrigin
 @RequestMapping("/properties")
 @RestController
-public final class PropertyRestController {
+public final class PropertyRestController implements RestCrud<Property, ObjectId> {
   private final PropertyRepository propertyRepository;
   private Property target;
   public PropertyRestController(@Autowired final PropertyRepository propertyRepository) {
     this.propertyRepository = propertyRepository;
   }
   @GetMapping
+  @Override
   public List<Property> getAll() {
     return propertyRepository.findAll();
   }
   @GetMapping("/{id}")
+  @Override
   public Property getOne(@PathVariable final ObjectId id) {
     return propertyRepository.findById(id).get();
   }
+  @Override
   @PostMapping
-  public Property add(@RequestBody final Property property) {
-    return propertyRepository.save(property);
+  public Property add(@RequestBody final Property post) {
+    return propertyRepository.save(post);
   }
+  @Override
   @PatchMapping("/{id}")
   public Property edit(
     @PathVariable("id") final ObjectId id,
@@ -63,6 +68,7 @@ public final class PropertyRestController {
     return propertyRepository.save(target);
   }
   @DeleteMapping("/{id}")
+  @Override
   public void delete(@PathVariable final ObjectId id) {
     propertyRepository.deleteById(id);
   }
